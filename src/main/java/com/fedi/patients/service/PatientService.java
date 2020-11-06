@@ -13,5 +13,12 @@ public interface PatientService {
 	 Patient getPatient(Long id);
 	List<Patient> getAllPatients();
 	Page<Patient> getAllPatientsParPage(int page, int size);
+	List<Patient> findByNom(String nom);
+	List<Patient> findByNomContains(String nom);
+	List<Patient> findByNomPrenomPatient (String nom, String prenom);
+	List<Patient> findByMedecin (Medecin medecin);
+	List<Patient> findByMedecinIdMed(Long id);
+	List<Patient> findByOrderByNomAsc();
+	List<Patient> trierPatientsNomPrenom();
 
 }

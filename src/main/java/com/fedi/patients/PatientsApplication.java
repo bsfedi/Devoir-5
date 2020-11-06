@@ -20,8 +20,8 @@ public class PatientsApplication implements CommandLineRunner{
 	}
 	@Override
 	public void run(String... args) throws Exception {
-	patientService.savePatient(new Patient("Ahmed","cherif",new Date(),"15:00"));
+	/*patientService.savePatient(new Patient("Ahmed","cherif",new Date(),"15:00"));
 	patientService.savePatient(new Patient("Ali","msakni",new Date(),"16:00"));
-	patientService.savePatient(new Patient("Jed","Ben ahmed",new Date(),"17:00"));
+	patientService.savePatient(new Patient("Jed","Ben ahmed",new Date(),"17:00"));*/
 	}
 }

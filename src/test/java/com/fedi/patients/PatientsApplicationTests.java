@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 
+import com.fedi.patients.entities.Medecin;
 import com.fedi.patients.entities.Patient;
 import com.fedi.patients.repos.*;
 import com.fedi.patients.service.PatientService;
@@ -46,10 +47,36 @@ class PatientsApplicationTests {
 	 for (Patient p : pats)
 	 {
 	 System.out.println(p);
+	 }	 
+	 }
+	 @Test
+	 public void testFindByNomPatient()
+	 {
+	 List<Patient> pats = patientRepository.findByNom("Fedi");
+	 for (Patient p : pats)
+	 {
+	 System.out.println(p);
 	 }
 	 }
 	 @Test
-	 public void testFindByNomProduitContains()
+	 public void testFindByNomPatientContains()
+	 {
+	 List<Patient> pats=patientRepository.findByNomContains("i");
+	 for (Patient p : pats)
+	 {
+	 System.out.println(p);
+	 } }
+	 @Test
+	 public void testfindByNomPrenom()
+	 {
+	 List<Patient> pats = patientRepository.findByNomPrenomPatient("Ali","msakni");
+	 for (Patient p : pats)
+	 {
+	 System.out.println(p);
+	 }
+	 }
+	 @Test
+	 public void testFindByNomatienttContains()
 	 {
 	 Page<Patient> pats = patientService.getAllPatientsParPage(0,2);
 	 System.out.println(pats.getSize());
@@ -57,4 +84,47 @@ class PatientsApplicationTests {
 	 {
 	 System.out.println(p);
 	 }}
+	 
+	 
+	 @Test
+	 public void testfindByMedecin()
+	 {
+		 Medecin med = new Medecin();
+		 med.setIdMed(1L);
+		 List<Patient> pats = patientRepository.findByMedecin(med);
+		 for (Patient p : pats)
+		 {
+		 System.out.println(p);
+		 }
+		 }
+	 
+	 @Test
+	 public void findByMedecinIdMed()
+	 {
+	 List<Patient> pats = patientRepository.findByMedecinIdMed(1L);
+	 for (Patient p : pats)
+	 {
+	 System.out.println(p);
+	 }
+	  }
+	 
+	 @Test
+	 public void testfindByOrderByNomAsc()
+	 {
+	 List<Patient> pats = patientRepository.findByOrderByNomAsc();
+	 for (Patient p : pats)
+	 {
+	 System.out.println(p);
+	 }
+	 }
+	 
+	 @Test
+	 public void testTrierPatientsNomPrenom()
+	 {
+	 List<Patient> pats = patientRepository.trierPatientsNomPrenom();
+	 for (Patient p : pats)
+	 {
+	 System.out.println(p);
+	 }
+	 }
 }

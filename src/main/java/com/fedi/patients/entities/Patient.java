@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Patient {
@@ -15,6 +16,8 @@ public class Patient {
 	private Date dateConsultation;
 	private String heure ;
 	
+	@ManyToOne
+	private Medecin medecin ;
 	
 	public String getPrenom() {
 		return prenom;
@@ -59,6 +62,14 @@ public class Patient {
 	}
 	public void setHeure(String heure) {
 		this.heure = heure;
+	}
+
+	public Medecin getMedecin() {
+		return medecin;
+	}
+
+	public void setMedecin(Medecin medecin) {
+		this.medecin = medecin;
 	}
 
 	@Override

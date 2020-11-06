@@ -40,5 +40,36 @@ public class PatientServiceImpl implements PatientService {
 	public Page<Patient> getAllPatientsParPage(int page, int size) {
 	return patientRepository.findAll(PageRequest.of(page, size));
 	}
+	@Override
+	public List<Patient> findByNom(String nom) {
+	return patientRepository.findByNom(nom);
+	}
+	
+	@Override
+	public List<Patient> findByNomContains(String nom) {
+	return patientRepository.findByNomContains(nom);
+	}
+
+	@Override
+	public List<Patient> findByNomPrenomPatient(String nom, String prenom) {
+		return patientRepository.findByNomPrenomPatient(nom, prenom);
+	}
+	
+	@Override
+	public List<Patient> findByMedecin(Medecin medecin) {
+	return patientRepository.findByMedecin(medecin);
+	}
+	@Override
+	public List<Patient> findByMedecinIdMed(Long id) {
+	return patientRepository.findByMedecinIdMed(id);
+	}
+	@Override
+	public List<Patient> findByOrderByNomAsc() {
+	return patientRepository.findByOrderByNomAsc();
+	}
+	@Override
+	public List<Patient> trierPatientsNomPrenom() {
+	return patientRepository.trierPatientsNomPrenom();
+	}
 
 }

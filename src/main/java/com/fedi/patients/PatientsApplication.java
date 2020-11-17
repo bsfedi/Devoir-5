@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 
 import com.fedi.patients.entities.Patient;
 import com.fedi.patients.service.PatientService;
@@ -14,12 +15,16 @@ import com.fedi.patients.service.PatientService;
 public class PatientsApplication implements CommandLineRunner{
 	@Autowired
 	PatientService patientService;
+	@Autowired
+	private RepositoryRestConfiguration repositoryRestConfiguration;
 
 	public static void main(String[] args) {
 		SpringApplication.run(PatientsApplication.class, args);
 	}
 	@Override
 	public void run(String... args) throws Exception {
+		repositoryRestConfiguration.exposeIdsFor(Patient.class);
+
 	/*patientService.savePatient(new Patient("Ahmed","cherif",new Date(),"15:00"));
 	patientService.savePatient(new Patient("Ali","msakni",new Date(),"16:00"));
 	patientService.savePatient(new Patient("Jed","Ben ahmed",new Date(),"17:00"));*/

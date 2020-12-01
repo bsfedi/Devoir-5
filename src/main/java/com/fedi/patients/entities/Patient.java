@@ -5,15 +5,35 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Size;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 @Entity
 public class Patient {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idPatientt;
+	
+	@NotNull
+	@Size (min = 4,max = 15)
 	private String nom;
+	@NotNull
+	@Size (min = 6,max = 12)
 	private String prenom;
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@PastOrPresent
 	private Date dateConsultation;
+	@NotNull
+	@Size (min = 5,max = 6)
 	private String heure ;
 	
 	@ManyToOne

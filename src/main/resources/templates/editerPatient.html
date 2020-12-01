@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorator="template">
+<link rel="stylesheet" type="text/css"
+href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+<head>
+<meta charset="utf-8">
+<title>Ajoute des Patients</title>
+</head>
+<body>
+<div layout:fragment="Mycontent">
+<div class="container mt-5">
+<div class="card">
+<div class="card-header">
+Modifier des Patients
+</div>
+<div class="card-body">
+<form th:action="@{savePatient}" method="post">
+<div class="form-group">
+<label class="control-label" hidden>ID Patient :</label>
+<input type="hidden" name="idPatientt" class="form-control"
+th:value="${patient.idPatientt}" />
+</div>
+<div class="form-group">
+<label class="control-label">Nom :</label>
+<input type="text" name="nom" class="form-control" th:value="${patient.nom}" />
+<span th:errors= ${patient.nom} class="text-danger">
+</span>
+</div>
+<div class="form-group">
+<label class="control-label">Prenom :</label>
+<input type="text" name="prenom" class="form-control"
+th:value="${patient.prenom}" />
+<span th:errors=${patient.prenom} class="text-danger">
+</span>
+</div>
+<div class="form-group">
+<label class="control-label">date Consultation :</label>
+<input type="date" name="dateConsultation" class="form-control" th:value="${patient.dateConsultation}"/>
+<span th:errors=${produit.dateConsultation} class="text-danger">
+</span>
+<div class="form-group">
+<label class="control-label">Heure :</label>
+<input type="text" name="heure" class="form-control"
+th:value="${patient.heure}" />
+<span th:errors=${patient.heure} class="text-danger">
+</span>
+</div>
+<div>
+<button type="submit" class="btn btn-primary">Valider</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
